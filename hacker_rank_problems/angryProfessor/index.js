@@ -18,8 +18,12 @@
 // => 'YES'
 
 function angryProfessor(k, a) {
+  const onTime = a.reduce((acc, arrivalTime) => {
+    if(arrivalTime <= 0) acc++;
+    return acc;
+  }, 0);
 
-
+  return onTime >= k ? 'NO' : 'YES';
 };
 
 
