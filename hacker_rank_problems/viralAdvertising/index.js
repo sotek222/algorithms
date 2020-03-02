@@ -18,6 +18,11 @@
 // 3      9     4       9
 // 4     12     6      15
 // 5     18     9      24
+// 6     27     13     37
+// 7     39     19     56
+// 8     57     28     84
+// 9    84     42     126
+// 10   126    63     189
 
 // The cumulative number of likes is 24.
 
@@ -32,3 +37,19 @@
 // viralAdvertising(3)
 // => 9
 
+function viralAdvertising(n){
+  let likes = 0;
+  let shares = 5;
+
+  for(let i = 0; i < n; i++){
+    const liked = Math.floor(shares / 2);
+
+    likes += liked;
+    shares = liked * 3;
+  };
+
+  return likes;
+};
+
+
+module.exports = viralAdvertising;
