@@ -21,5 +21,21 @@
 
 
 function designerPdfViewer(h, word) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
+  const letterHeights = h.reduce((acc, cv, idx) => {
+    acc[alphabet[idx]] = cv;
+    return acc;
+  }, new Map());
+
+  let tallest = 1;
+
+  for(let char of word){
+    letterHeights[char] > tallest ? tallest = letterHeights[char] : null; 
+  };
+
+  return tallest * word.length;
 };
+
+
+module.exports = designerPdfViewer;
