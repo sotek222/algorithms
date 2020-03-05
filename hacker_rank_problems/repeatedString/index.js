@@ -20,6 +20,46 @@
 
 // Examples: 
 // repeatedString('aba', 10);
+// "abaabaabaa"
 // => 7
 // repeatedString('a', 1000000000000)
 // => 1000000000000
+
+
+function countChar(str, character){
+  let count = 0;
+  for(let char of str){
+    char === character ? count++ : null;
+  }
+  return count;
+};
+
+
+function repeatedString(s, n, char){
+  if(s === char) return n;
+
+  const charInString = countChar(s, char);
+  
+  const preRemainder = Math.floor(n / s.length) * charInString;
+  const remainderString = s.slice(0, n % s.length);
+
+  const numOfCharsInRemainder = countChar(remainderString, char);
+
+
+  return preRemainder + numOfCharsInRemainder;
+};
+
+module.exports = repeatedString;
+
+// function repeatedString(s, n){
+//   let count = 0;
+//   let i = 0;
+
+//   while(n){
+//     if(i === s.length) i = 0;
+//     if (s[i] === 'a') count++;
+//     n--;
+//     i++;
+//   };
+//   return count;
+// };
