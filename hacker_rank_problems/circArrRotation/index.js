@@ -29,12 +29,16 @@
 // the output is [a[1], a[2]];
 
 function circularArrayRotation(arr, k, queries){
-  while(k){
-    arr.unshift(arr.pop());
-    k--;
-  };
-
+  arr.unshift(...arr.splice(arr.length - k, k));
   return queries.map(q => arr[q]);
 };
 
 module.exports = circularArrayRotation;
+
+// function circularArrayRotation(arr, k, queries) {
+//   while (k) {
+//     arr.unshift(arr.pop());
+//     k--;
+//   };
+//   return queries.map(q => arr[q]);
+// };
