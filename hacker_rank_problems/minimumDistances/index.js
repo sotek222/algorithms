@@ -17,6 +17,20 @@
 // minimumDistances(arr)
 // => 2 (the distance between 2 && 2)
 
-function minimumDistances(arr){};
+function minimumDistances(arr){
+  let min;
+
+  for (let i = 0; i < arr.length; i++) {
+    let distance;
+    for (let j = (i + 1); j < arr.length; j++) {
+        if (arr[j] === arr[i]) {
+          distance = j - i;
+        };
+    };
+    if (distance < min || !min) min = distance;
+  };
+
+  return min ? min : -1;
+};
 
 module.exports = minimumDistances;
