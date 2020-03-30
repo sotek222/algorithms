@@ -18,7 +18,19 @@
 // => "bcdgjkpqruvxz"
 
 function missingAlphas(sentence){
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const missingLetters = [];
 
+  const charMap = sentence.split("").reduce((acc, cv) => {
+    acc[cv.toLowerCase()] ? acc[cv.toLowerCase()] += 1 : acc[cv.toLowerCase()] = 1; 
+    return acc;
+  }, {});
+
+  for (const letter of alphabet) {
+    charMap[letter] ? null : missingLetters.push(letter);
+  }
+
+  return missingLetters.join('');
 };
 
 module.exports = missingAlphas;
